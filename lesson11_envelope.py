@@ -3,10 +3,12 @@
 #
 # 音の立ち上がり(フェードイン)と減衰(フェードアウト)を追加します。
 # これにより、音の始まりと終わりが「ブツッ」とならず、なめらかになります。
+# あわせて oscilloscope モジュールを使い、フェードした波形の形を画面に表示します。
 
 import numpy as np
 import sounddevice as sd
 import keyboard
+from oscilloscope import show_waveform
 
 sample_rate = 44100
 
@@ -42,6 +44,7 @@ def play_wave(frequency, duration, wave_type="sine"):
     wave = make_wave(frequency, duration, wave_type)
     sd.play(wave, sample_rate)
     sd.wait()
+    show_waveform(wave, sample_rate, title=f"{frequency}Hz")
 
 
 key_to_freq = {

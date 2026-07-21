@@ -2,9 +2,11 @@
 # 第4回: 周波数の計算
 #
 # 平均律(へいきんりつ)の計算式を関数にして、音名から周波数を求められるようにします。
+# あわせて oscilloscope モジュールを使い、鳴らしている音の波形を画面に表示します。
 
 import numpy as np
 import sounddevice as sd
+from oscilloscope import show_waveform, keep_open
 
 sample_rate = 44100
 
@@ -38,9 +40,11 @@ def play_note(name, duration=1.0):
     wave = np.sin(2 * np.pi * freq * t)
     sd.play(wave, sample_rate)
     sd.wait()
+    show_waveform(wave, sample_rate, title=f"{name} ({freq:.1f}Hz)")
 
 
 # ド・ミ・ソ を順番に鳴らす
 play_note("C4")
 play_note("E4")
 play_note("G4")
+keep_open()  # 画面を閉じるまで波形を表示したままにする

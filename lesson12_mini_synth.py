@@ -6,11 +6,13 @@
 # - 音色切替(sine/square/triangle)
 # - エンベロープ(なめらかな音の始まり・終わり)
 # - メロディの自動演奏
+# - オシロスコープ(演奏中の波形表示)
 
 import numpy as np
 import sounddevice as sd
 import keyboard
 import time
+from oscilloscope import show_waveform
 
 sample_rate = 44100
 
@@ -43,6 +45,7 @@ def play_wave(frequency, duration, wave_type="sine"):
     wave = make_wave(frequency, duration, wave_type)
     sd.play(wave, sample_rate)
     sd.wait()
+    show_waveform(wave, sample_rate, title=f"{frequency}Hz ({wave_type})")
 
 
 # キー -> 周波数(Hz) の対応表(ドレミファソラシド)

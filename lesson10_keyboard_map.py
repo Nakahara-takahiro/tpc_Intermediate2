@@ -3,10 +3,12 @@
 #
 # 複数のキーに音階を割り当て、辞書で「キー -> 周波数」の対応表を作ります。
 # これでパソコンのキーボードが、ミニ鍵盤になります。
+# あわせて oscilloscope モジュールを使い、音を鳴らすたびに波形を画面に表示します。
 
 import numpy as np
 import sounddevice as sd
 import keyboard
+from oscilloscope import show_waveform
 
 sample_rate = 44100
 
@@ -27,6 +29,7 @@ def play_wave(frequency, duration, wave_type="sine"):
     wave = make_wave(frequency, duration, wave_type)
     sd.play(wave, sample_rate)
     sd.wait()
+    show_waveform(wave, sample_rate, title=f"{frequency}Hz")
 
 
 # キー -> 周波数(Hz) の対応表(ドレミファソラシド)

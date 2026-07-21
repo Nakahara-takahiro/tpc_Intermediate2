@@ -2,10 +2,12 @@
 # 第9回: キー入力で音
 #
 # keyboard ライブラリを使って、キーを押すと音が鳴る仕組みを作ります。
+# あわせて oscilloscope モジュールを使い、音を鳴らすたびに波形を画面に表示します。
 
 import numpy as np
 import sounddevice as sd
 import keyboard
+from oscilloscope import show_waveform
 
 sample_rate = 44100
 
@@ -26,6 +28,7 @@ def play_wave(frequency, duration, wave_type="sine"):
     wave = make_wave(frequency, duration, wave_type)
     sd.play(wave, sample_rate)
     sd.wait()
+    show_waveform(wave, sample_rate, title=f"{frequency}Hz")
 
 
 print("スペースキーを押すとラの音(440Hz)が鳴ります。ESCキーで終了します。")

@@ -3,9 +3,11 @@
 #
 # 波形タイプ(sine/square/triangle)を切り替えられる関数にまとめます。
 # ここで作る make_wave / play_wave は、次回以降もずっと使う基本パーツです。
+# あわせて oscilloscope モジュールを使い、音色ごとの波形の違いを画面に表示します。
 
 import numpy as np
 import sounddevice as sd
+from oscilloscope import show_waveform, keep_open
 
 sample_rate = 44100
 
@@ -32,9 +34,11 @@ def play_wave(frequency, duration, wave_type="sine"):
     wave = make_wave(frequency, duration, wave_type)
     sd.play(wave, sample_rate)
     sd.wait()
+    show_waveform(wave, sample_rate, title=f"{frequency}Hz ({wave_type})")
 
 
 # 同じ高さの音(440Hz)を、音色を変えて聞き比べる
 play_wave(440, 1.0, "sine")
 play_wave(440, 1.0, "square")
 play_wave(440, 1.0, "triangle")
+keep_open()  # 画面を閉じるまで波形を表示したままにする
