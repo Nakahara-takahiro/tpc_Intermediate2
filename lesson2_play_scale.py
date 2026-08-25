@@ -4,7 +4,7 @@
 # リストと for文を使って、ドレミファソラシドを順番に鳴らします。
 # あわせて oscilloscope モジュールを使い、鳴らしている音の波形を画面に表示します。
 
-from tone import play_tone
+from tone_util import play_tone
 from oscilloscope import show_waveform, keep_open
 
 # ドレミファソラシド の周波数(Hz)をリストに入れる
