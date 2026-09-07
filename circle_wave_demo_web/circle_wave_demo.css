@@ -1,0 +1,126 @@
+/*
+  circle_wave_demo.css
+  circle_wave_demo.html 用のスタイル。
+
+  WordPress(Lightningテーマ)のカスタムHTMLブロックに貼り付けるときは、
+  このファイルの中身をまるごと <style>...</style> タグで囲んでください。
+  テーマ側のCSSと衝突しないよう、すべてのルールを .cw-demo の中だけに効くようにしています。
+*/
+
+.cw-demo,
+.cw-demo *,
+.cw-demo *::before,
+.cw-demo *::after {
+  box-sizing: border-box;
+}
+
+.cw-demo {
+  max-width: 900px;
+  margin: 1.5rem auto;
+  padding: 1rem;
+  background: #fafafa;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  font-family: "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+  color: #222;
+  line-height: 1.7;
+}
+
+.cw-demo__lead {
+  margin: 0 0 1rem;
+  font-size: .95rem;
+}
+
+.cw-demo__stage {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.cw-demo__panel {
+  flex: 1 1 260px;
+  padding: .75rem;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.cw-demo__panel--wave {
+  flex: 2 1 420px;
+}
+
+.cw-demo__title {
+  margin: 0 0 .5rem;
+  font-size: .9rem;
+  text-align: center;
+  color: #333;
+}
+
+.cw-demo__caption {
+  margin: .5rem 0 0;
+  font-size: .8rem;
+  text-align: center;
+  color: #777;
+}
+
+.cw-demo__canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #fff;
+}
+
+.cw-demo__canvas--circle {
+  aspect-ratio: 1 / 1;
+}
+
+.cw-demo__canvas--wave {
+  aspect-ratio: 16 / 9;
+}
+
+.cw-demo__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  margin-top: 1rem;
+  padding: .75rem 1rem;
+  background: #f0f2f5;
+  border-radius: 8px;
+}
+
+.cw-demo__control {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  flex: 1 1 240px;
+  font-size: .9rem;
+}
+
+.cw-demo__control-label {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.cw-demo__range {
+  flex: 1 1 auto;
+  width: 100%;
+  margin: 0;
+  accent-color: #1f6feb;
+}
+
+.cw-demo__control-value {
+  flex: 0 0 auto;
+  min-width: 4.5em;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 560px) {
+  .cw-demo__stage {
+    flex-direction: column;
+  }
+
+  .cw-demo__panel--wave {
+    flex-basis: auto;
+  }
+}

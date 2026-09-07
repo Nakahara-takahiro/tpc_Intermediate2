@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>円と波のデモ</title>
+<link rel="stylesheet" href="circle_wave_demo.css">
+</head>
+<body>
+
+<!--
+  circle_wave_demo.html
+  単位円を回る点の高さが、そのままサイン波になる様子を見せるデモ。
+  circle_wave_demo.py のHTML+CSS+JS版(ブラウザだけで動く。Pythonは不要)。
+
+  【WordPress(Lightningテーマ)のカスタムHTMLブロックで使う場合】
+  このファイルをまるごと貼り付けるのではなく、次の3点セットにして
+  1つのカスタムHTMLブロックに貼り付けてください
+  (カスタムHTMLブロックは <head> を持てないため、外部ファイルを
+  <link>/<script src> で読み込む書き方は使えません)。
+
+    1. circle_wave_demo.css の中身を <style>...</style> で囲んで貼り付ける
+    2. 下の <div class="cw-demo"> ~ </div> をそのまま貼り付ける
+    3. circle_wave_demo.js の中身を <script>...</script> で囲んで貼り付ける
+
+  (貼り付ける順番は自由です。ブロックの中で <style> → HTML → <script> の順にすると分かりやすいです)
+-->
+
+<div class="cw-demo">
+  <noscript>
+    <p class="cw-demo__lead">このデモを見るには、ブラウザでJavaScriptを有効にしてください。</p>
+  </noscript>
+
+  <p class="cw-demo__lead">
+    左の円のふちを、点が一定の速さでぐるぐる回ります。その点の「高さ」を右へ流していくと、
+    波が描かれます。下のスライダーを動かして、波の形がどう変わるか確かめてみましょう。
+  </p>
+
+  <div class="cw-demo__stage">
+    <div class="cw-demo__panel cw-demo__panel--circle">
+      <p class="cw-demo__title">回転する点</p>
+      <canvas class="cw-demo__canvas cw-demo__canvas--circle"
+              aria-label="円周上を回転する点のアニメーション">
+        お使いのブラウザはCanvas表示に対応していません。
+      </canvas>
+    </div>
+    <div class="cw-demo__panel cw-demo__panel--wave">
+      <p class="cw-demo__title cw-demo__title--wave">振幅(しんぷく) = 1.0　周波数(しゅうはすう) = 1.0 Hz</p>
+      <canvas class="cw-demo__canvas cw-demo__canvas--wave"
+              aria-label="時間とともに変化する波のグラフ">
+        お使いのブラウザはCanvas表示に対応していません。
+      </canvas>
+      <p class="cw-demo__caption">時間[秒]（いちばん右が「今」）</p>
+    </div>
+  </div>
+
+  <div class="cw-demo__controls">
+    <label class="cw-demo__control">
+      <span class="cw-demo__control-label">周波数(しゅうはすう)</span>
+      <input class="cw-demo__range cw-demo__range--freq" type="range"
+             min="0.1" max="5" step="0.1" value="1.0">
+      <span class="cw-demo__control-value cw-demo__control-value--freq">1.0 Hz</span>
+    </label>
+    <label class="cw-demo__control">
+      <span class="cw-demo__control-label">振幅(しんぷく)</span>
+      <input class="cw-demo__range cw-demo__range--amp" type="range"
+             min="0.2" max="1.5" step="0.1" value="1.0">
+      <span class="cw-demo__control-value cw-demo__control-value--amp">1.0</span>
+    </label>
+  </div>
+</div>
+
+<script src="circle_wave_demo.js"></script>
+</body>
+</html>

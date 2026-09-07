@@ -19,10 +19,10 @@
 
 | 回 | テーマ | 内容 |
 |----|--------|------|
-| 1 | 音を鳴らす基本 | 共通モジュール`tone.py`の`play_tone`関数で単音再生。import・関数呼び出し・引数の理解 |
+| 1 | 音を鳴らす基本 | 共通モジュール`tone_util.py`の`play_tone`関数で単音再生。import・関数呼び出し・引数の理解。`tone_util.py`自体もこの回に手打ちする |
 | 2 | 音階の演奏 | リストと`for`文でドレミファソラシドを演奏 |
-| 3 | 波の正体 | 第1〜2回で使った`play_tone`の中身を自分で書く。`numpy`でサイン波データを作成し`sounddevice`で再生。「波=数字の並び」 |
-| 4 | 周波数の計算 | 平均律の計算式を関数化。音名→周波数の変換(辞書導入) |
+| 3 | 波の正体・周波数の計算 | 前半: `circle_wave_demo.py`(写経なし、ダウンロードして実行)で、単位円を回る点の高さがサイン波になる様子を観察。画面下の周波数スライダーを操作して波形の変化を確認し、振幅は`amplitude`を書き換えて確認。後半: 平均律の計算式を関数化し、音名→周波数の変換(辞書導入)を写経(`lesson3_frequency_calc.py`) |
+| 4 | 予備回 | 新規内容なし。第3回の写経が終わらない生徒の追い上げ、終わった生徒は前倒しや別課題 |
 | 5 | 波形を見る | `matplotlib`でサイン波をグラフ表示。x軸=時間、y軸=振幅 |
 | 6 | 波形の種類 | 矩形波・三角波を生成し、見比べ・聞き比べ |
 | 7 | 倍音体験 | 2つの波を足し算して新しい波形を作る |
@@ -37,7 +37,7 @@
 - 第1回から: `numpy`, `sounddevice`, `matplotlib`(Windows/Linux混在のため、標準ライブラリの`winsound`は使わない。事前に環境構築日を設ける)
 - 第9回以降: `keyboard`
 
-※ 第1〜2回では、共通モジュール`tone.py`の`play_tone`関数(音を鳴らす)と`oscilloscope.py`の`show_waveform`関数(波形を表示する)を呼び出すだけにして、中でnumpy・sounddevice・matplotlibが何をしているかは意識させない。numpy・sounddeviceの中身を自分で書くのは第3回、matplotlibの中身を自分で書くのは第5回から。
+※ `tone_util.py`(`play_tone`関数、音を鳴らす)は短いため第1回に手打ちする。`oscilloscope.py`の`show_waveform`関数(波形を表示する)は全回を通じて呼び出すだけで、中身は書かせない。matplotlibの中身を自分で書くのは第5回から。第3回前半の`circle_wave_demo.py`もmatplotlibを使うが、写経対象外(ダウンロードして実行・数値変更のみ)。
 
 ## 写経・コピペルール
 
@@ -63,12 +63,12 @@
 ```
 tpc_Intermediate2/
   README.md                     ← 全体の解説(各回のテーマ・キーワード・変更点をまとめて記載)
-  tone.py                        ← 共通モジュール: 音を鳴らす(play_tone)。第1〜2回はこれを呼ぶだけ、写経対象外
+  tone_util.py                   ← 共通モジュール: 音を鳴らす(play_tone)。中身は第1回に手打ち(短いため写経対象)
   oscilloscope.py                ← 共通モジュール: 波形表示(show_waveform)。全回から呼べる、写経対象外
+  circle_wave_demo.py            ← 第3回前半のデモ教材: 単位円→サイン波。ダウンロードして実行、写経対象外
   lesson1_play_tone.py           ← 第1回: 単音再生
   lesson2_play_scale.py          ← 第2回: 音階の演奏
-  lesson3_sine_wave.py           ← 第3回: サイン波生成・再生
-  lesson4_frequency_calc.py      ← 第4回: 周波数計算(音名→周波数)
+  lesson3_frequency_calc.py      ← 第3回後半: 周波数計算(音名→周波数)。第4回は予備回のためファイルなし
   lesson5_plot_wave.py           ← 第5回: 波形のグラフ表示
   lesson6_wave_shapes.py         ← 第6回: 矩形波・三角波
   lesson7_overtone.py            ← 第7回: 倍音(波の足し算)
